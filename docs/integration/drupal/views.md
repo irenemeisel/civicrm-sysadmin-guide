@@ -26,7 +26,7 @@ CiviCRM are far reaching.
 
 ### Configuration
 
-#### Drupal 7
+#### Drupal 7 and Drupal 8
 
 These instructions assume CiviCRM and Drupal are on separate databases located on the same physical host. If your CiviCRM and Drupal are located within the same database the 12 steps below are not required. 
 
@@ -62,36 +62,6 @@ These instructions assume CiviCRM and Drupal are on separate databases located o
 
  !!! note
         If you add a new set of custom fields to CiviCRM you will need to re-do these steps again. So any new fields in the field set can be accessed by Drupal Views. 
-
-#### Drupal 6
-
-NOTE: For Drupal 6 the variable name in the `settings.php` file is different. Rather than `$databases['default']['default']['prefix']= array(`, for Drupal 6 the relevant array is `$db_prefix`, so the beginning lines of the addition to `settings.php` will look something like this:
-
-```php
-$db_prefix = array (
- 'default' => 'dru_',
- 'civicrm_acl' => '`civicrmdb`.',
- 'civicrm_acl_cache' => '`civicrmdb`.',
- 'civicrm_acl_contact_cache' => '`civicrmdb`.',
- 'civicrm_acl_entity_role' => '`civicrmdb`.',
- 'civicrm_action_log' => '`civicrmdb`.',
- 'civicrm_action_mapping' => '`civicrmdb`.',
- 'civicrm_action_schedule' => '`civicrmdb`.',
- 'civicrm_activity' => '`civicrmdb`.',
- 'civicrm_activity_assignment' => '`civicrmdb`.',
- 'civicrm_activity_target' => '`civicrmdb`.',
-```
-
-etc.
-
-That example is for a Drupal set that uses table prefix `dru_` and for which CiviCRM is set up to use a separate table named `civicrmdb`. CiviCRM also uses a table prefix but that is automatically added–do not add it again here.
-
-Also–if you use a table prefix in Drupal 6 you probably already have a `$db_prefix="dru_";` or similar statement in your `settings.php`. So you will need to remove any existing declaration of `$db_prefix` and replace it with one similar to above
-
-!!!note
-If you are using Custom
-Data sets in CiviCRM, anytime you add a new data **set** (not just a
-field) you must repeat this process.
 
 ### Creating Views Using CiviCRM Data
 
